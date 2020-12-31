@@ -1,20 +1,14 @@
-import * as React from 'react'
-import styled from '@emotion/styled'
-
-import { dimensions } from '../styles/variables'
-
-const StyledPage = styled.div`
-  display: block;
-  flex: 1;
-  position: relative;
-  padding: ${dimensions.containerPadding}rem;
-  margin-bottom: 3rem;
-`
+import React from 'react'
+import { Box } from '@chakra-ui/react'
 
 interface PageProps {
   className?: string
 }
 
-const Page: React.FC<PageProps> = ({ children, className }) => <StyledPage className={className}>{children}</StyledPage>
+const Page: React.FC<PageProps> = ({ children, className }) => (
+  <Box display="block" flex="1" position="relative" padding="2rem" mb="3rem" className={className}>
+    {children}
+  </Box>
+)
 
 export default Page
