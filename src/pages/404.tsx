@@ -3,10 +3,10 @@ import { Link } from 'gatsby'
 
 import { Container } from '@chakra-ui/react'
 import Page from '../components/Page'
-import IndexLayout from '../layouts'
+import Layout from '../components/Layout';
 
 const NotFoundPage: React.FC = () => (
-  <IndexLayout>
+  <Layout>
     <Page>
       <Container>
         <h1>404: Page not found.</h1>
@@ -15,7 +15,7 @@ const NotFoundPage: React.FC = () => (
         </p>
       </Container>
     </Page>
-  </IndexLayout>
+  </Layout>
 )
 
 export default NotFoundPage

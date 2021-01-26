@@ -1,0 +1,86 @@
+backend:
+    name: git-gateway
+    repo: dan13ram/dan13ram-blog
+    branch: master
+    commit_messages:
+        create: "Create {{collection}} “{{slug}}”"
+        update: "Update {{collection}} “{{slug}}”"
+        delete: "Delete {{collection}} “{{slug}}”"
+        uploadMedia: "[skip ci] Upload “{{path}}”"
+        deleteMedia: "[skip ci] Delete “{{path}}”"
+
+media_folder: static/img
+public_folder: /img
+
+# when using the default proxy server port
+local_backend: true
+# url: http://localhost:8081/api/v1
+# branch: develop
+
+collections:
+    - name: "work"
+      label: "Work"
+      folder: "static/pages/work"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "art-collection",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Featured Item", name: "featuredItem", widget: "boolean" }
+          - { label: "Featured Image", name: "featuredImage", widget: image }
+          - { label: "Tags", name: "tags", widget: "list" }
+          - label: "Content"
+            name: "content"
+            widget: "list"
+            summary: "{{fields.title}} - {{fields.description}}"
+            fields:
+                - { label: "Image", name: "image", widget: image }
+                - { label: "Title", name: "title", widget: "string" }
+                - { label: "Description", name: "description", widget: "text" }
+    - name: "blog"
+      label: "Blog"
+      folder: "static/pages/blog"
+      create: true
+      slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+      fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "blog-post",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Featured Post", name: "featuredPost", widget: "boolean" }
+          - label: "Featured Images"
+            name: "featuredImages"
+            widget: "list"
+            fields:
+                - { label: "Image", name: "image", widget: image }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Tags", name: "tags", widget: "list" }
+
+    - name: "pages"
+      label: "Pages"
+      files:
+          - file: "static/pages/about/index.md"
+            label: "About Page"
+            name: "about"
+            fields:
+                - {
+                    label: "Template Key",
+                    name: "templateKey",
+                    widget: "hidden",
+                    default: "about-page",
+                  }
+                - { label: "Title", name: "title", widget: "string" }
+                - { label: "Body", name: "body", widget: "markdown" }
+                - { label: "AvatarImage", name: "avatarImage", widget: "image" }
