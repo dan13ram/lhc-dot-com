@@ -116,3 +116,22 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# node_modules
+node_modules
+# gatsby cache
+.cache/
+# build directory
+public/
+# netlify static files
+static/admin/*.bundle.*
+# MAC files
+.DS_Store
+# yarn logs
+yarn-debug.log*
+yarn-error.log*
+# vim swp files
+*.swp
+# ctags
+tags
+
