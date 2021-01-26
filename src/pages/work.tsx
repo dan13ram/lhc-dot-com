@@ -5,6 +5,8 @@ import SEO from '../components/SEO';
 import { Icon } from '@iconify/react';
 import fullIcon from '@iconify/icons-ant-design/fullscreen-outlined';
 import exitIcon from '@iconify/icons-ant-design/fullscreen-exit-outlined';
+import { Flex } from '@chakra-ui/react';
+import { Loader } from '../components/Loader';
 
 const WorkPage: React.FC = () => {
   const [full, toggleFull] = useState(false);
@@ -18,6 +20,9 @@ const WorkPage: React.FC = () => {
   return (
     <div className={full ? 'workPage page full' : 'workPage page'}>
       <SEO title={`Work`} />
+      <Flex w="100%" bg="rgba(145, 125, 126)" p="10rem" justify="center" align="center">
+        <Loader size={5} />
+      </Flex>
       <section className="content">
         <div className="title">my work</div>
         <div

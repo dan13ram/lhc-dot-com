@@ -16,7 +16,9 @@ const Navbar = ({ title }) => {
   const [currentTheme, setTheme] = React.useState('light');
   const [theme, toggleTheme] = React.useState(false);
   const isActiveNavItem = ({ isCurrent }) => {
-    return isCurrent ? { className: 'navItem active' } : { className: 'navItem' };
+    return isCurrent
+      ? { className: 'navItem active' }
+      : { className: 'navItem' };
   };
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme');
@@ -72,13 +74,25 @@ const Navbar = ({ title }) => {
         </label>
       </div>
       <div className="social">
-        <a href={`https://vimeo.com/${social.vimeo}`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`https://vimeo.com/${social.vimeo}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon className="icon" icon={vimeoIcon} />
         </a>
-        <a href={`https://instagram.com/${social.instagram}`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`https://instagram.com/${social.instagram}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon className="icon" icon={instagramIcon} />
         </a>
-        <a href={`https://linkedin.com/in/${social.linkedIn}`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`https://linkedin.com/in/${social.linkedIn}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon className="icon" icon={linkedinIcon} />
         </a>
       </div>

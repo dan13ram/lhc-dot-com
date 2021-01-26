@@ -142,5 +142,5 @@ export const LogoIcon = createIcon({
       </g>
     </>
   ),
-  viewBox: '0 0 1000 1000'
+  viewBox: '0 0 1000 1000',
 });

@@ -1,4 +1,4 @@
-import chakraTheme from '@chakra-ui/theme'
+import chakraTheme from '@chakra-ui/theme';
 
 const theme = {
   ...chakraTheme,
@@ -14,9 +14,9 @@ const theme = {
       600: '#852e30',
       700: '#602022',
       800: '#3b1214',
-      900: '#1a0305'
-    }
-  }
-}
+      900: '#1a0305',
+    },
+  },
+};
 
-export default theme
+export default theme;

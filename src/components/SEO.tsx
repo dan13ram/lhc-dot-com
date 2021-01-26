@@ -18,66 +18,73 @@ type Props = {
   titleTemplate?: string;
 };
 
-const SEO: React.FC<Props> = ({ description, lang, meta, title, titleTemplate }) => {
+const SEO: React.FC<Props> = ({
+  description,
+  lang,
+  meta,
+  title,
+  titleTemplate,
+}) => {
   const siteMetadata = useSiteMetadata();
   const metaDescription = description || siteMetadata.description;
   const defaultMeta: Array<Meta> = [
     {
       name: `description`,
-      content: metaDescription
+      content: metaDescription,
     },
     {
       property: `og:title`,
-      content: title
+      content: title,
     },
     {
       property: `og:description`,
-      content: metaDescription
+      content: metaDescription,
     },
     {
       property: `og:type`,
-      content: `website`
+      content: `website`,
     },
     {
       name: `twitter:card`,
-      content: `summary`
+      content: `summary`,
     },
     {
       name: `twitter:creator`,
-      content: siteMetadata.social.twitter
+      content: siteMetadata.social.twitter,
     },
     {
       name: `twitter:title`,
-      content: title
+      content: title,
     },
     {
       name: `twitter:description`,
-      content: metaDescription
+      content: metaDescription,
     },
     {
       name: `theme-color`,
-      content: `#fff`
+      content: `#fff`,
     },
     {
       name: `msapplication-TileColor`,
-      content: `#fff`
+      content: `#fff`,
     },
     {
       property: `og:type`,
-      content: `website`
+      content: `website`,
     },
     {
       property: `og:image`,
-      content: `${withPrefix(`/`)}img/logo.png`
-    }
+      content: `${withPrefix(`/`)}img/logo.png`,
+    },
   ];
 
-  const allMeta: Array<Meta> = meta && meta.length > 0 ? defaultMeta.concat(meta) : defaultMeta;
+  const allMeta: Array<Meta> =
+    meta && meta.length > 0 ? defaultMeta.concat(meta) : defaultMeta;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
       title={title}
       titleTemplate={titleTemplate || `%s | ${siteMetadata.title}`}

@@ -3,24 +3,24 @@ import PropTypes from 'prop-types';
 import { BlogPostTemplate } from '../../templates/blog-post';
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
-    const tags = entry.getIn(['data', 'tags']);
-    const featuredImages = entry.getIn(['data', 'featuredImages']);
-    return (
-        <BlogPostTemplate
-            content={widgetFor('body')}
-            description={entry.getIn(['data', 'description'])}
-            tags={tags && tags.toJS()}
-            featuredImages={featuredImages && featuredImages.toJS()}
-            title={entry.getIn(['data', 'title'])}
-        />
-    );
+  const tags = entry.getIn(['data', 'tags']);
+  const featuredImages = entry.getIn(['data', 'featuredImages']);
+  return (
+    <BlogPostTemplate
+      content={widgetFor('body')}
+      description={entry.getIn(['data', 'description'])}
+      tags={tags && tags.toJS()}
+      featuredImages={featuredImages && featuredImages.toJS()}
+      title={entry.getIn(['data', 'title'])}
+    />
+  );
 };
 
 BlogPostPreview.propTypes = {
-    entry: PropTypes.shape({
-        getIn: PropTypes.func,
-    }),
-    widgetFor: PropTypes.func,
+  entry: PropTypes.shape({
+    getIn: PropTypes.func,
+  }),
+  widgetFor: PropTypes.func,
 };
 
 export default BlogPostPreview;

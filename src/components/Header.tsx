@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
-import { Flex, Text } from '@chakra-ui/react'
+import * as React from 'react';
+import { Link } from 'gatsby';
+import { Flex, Text } from '@chakra-ui/react';
 
 interface HeaderProps {
-  title: string
+  title: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ title }) => (
@@ -13,6 +13,6 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
       <Text fontWeight="bold"> Test </Text>
     </Flex>
   </Flex>
-)
+);
 
-export default Header
+export default Header;
