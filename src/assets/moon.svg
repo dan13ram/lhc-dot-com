@@ -19,21 +19,10 @@
   <animate
     attributeName="opacity"
     dur="8s"
-    keyTimes="0;0.05625;0.06875;0.125;1"
-    values="0;1;1;0;0"
+    keyTimes="0;0.375;0.43125;0.44375;0.5;1"
+    values="0;0;1;1;0;0"
     repeatCount="indefinite"
-    begin="3s"
   />
-  <!-- <animateTransform -->
-  <!--   xmlns="http://www.w3.org/2000/svg" -->
-  <!--   attributeName="transform" -->
-  <!--   type="rotate" -->
-  <!--   begin="0s" -->
-  <!--   dur="1s" -->
-  <!--   repeatCount="indefinite" -->
-  <!--   values="0;5;-5;5;-5;0" -->
-  <!--   keyTimes="0;0.2;0.4;0.6;0.8;1" -->
-  <!-- /> -->
   <path
     class="selected"
     fill="#ffb6c1"

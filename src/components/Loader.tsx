@@ -1,5 +1,5 @@
-import React from 'react';
-import { Flex, FlexProps } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { Fade, Flex, FlexProps } from '@chakra-ui/react';
 
 import { ReactComponent as Hoodie } from '../assets/hoodie.svg';
 import { ReactComponent as Cupcake } from '../assets/cupcake.svg';
@@ -37,33 +37,39 @@ export const Loader: React.FC<Props> = ({ size: sizeInRem = 10 }) => {
   const pencilSize = `${sizeInRem * 0.75}rem`;
   const moonSize = `${sizeInRem * 0.75}rem`;
   const lotusSize = `${sizeInRem * 0.75}rem`;
+  const [fade, setFade] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setFade(true), 150);
+  }, []);
 
   return (
-    <Flex position="relative" h={size} w={size}>
-      <CenteredBox>
-        <Hoodie width={size} height={size} />
-      </CenteredBox>
-      <CenteredBox>
-        <Cupcake width={cupcakeSize} height={cupcakeSize} />
-      </CenteredBox>
-      <CenteredBox>
-        <BrushPencil width={pencilSize} height={pencilSize} />
-      </CenteredBox>
-      <CenteredBox>
-        <Moon width={moonSize} height={moonSize} />
-      </CenteredBox>
-      <CenteredBox transform="translate(-55%,-50%)">
-        <TeaCup width={teacupSize} height={teacupSize} />
-      </CenteredBox>
-      <CenteredBox transform="translate(-45%,-50%) rotate(-2deg)">
-        <TeaPot width={teapotSize} height={teapotSize} />
-      </CenteredBox>
-      <CenteredBox transform="translate(-50%,-57.5%)">
-        <Strawberry width={strawberrySize} height={strawberrySize} />
-      </CenteredBox>
-      <CenteredBox>
-        <Lotus width={lotusSize} height={lotusSize} />
-      </CenteredBox>
-    </Flex>
+    <Fade in={fade}>
+      <Flex position="relative" h={size} w={size}>
+        <CenteredBox>
+          <Hoodie width={size} height={size} />
+        </CenteredBox>
+        <CenteredBox>
+          <Cupcake width={cupcakeSize} height={cupcakeSize} />
+        </CenteredBox>
+        <CenteredBox>
+          <BrushPencil width={pencilSize} height={pencilSize} />
+        </CenteredBox>
+        <CenteredBox>
+          <Moon width={moonSize} height={moonSize} />
+        </CenteredBox>
+        <CenteredBox transform="translate(-55%,-50%)">
+          <TeaCup width={teacupSize} height={teacupSize} />
+        </CenteredBox>
+        <CenteredBox transform="translate(-45%,-50%) rotate(-2deg)">
+          <TeaPot width={teapotSize} height={teapotSize} />
+        </CenteredBox>
+        <CenteredBox transform="translate(-50%,-57.5%)">
+          <Strawberry width={strawberrySize} height={strawberrySize} />
+        </CenteredBox>
+        <CenteredBox>
+          <Lotus width={lotusSize} height={lotusSize} />
+        </CenteredBox>
+      </Flex>
+    </Fade>
   );
 };

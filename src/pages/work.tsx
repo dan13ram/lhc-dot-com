@@ -20,7 +20,13 @@ const WorkPage: React.FC = () => {
   return (
     <div className={full ? 'workPage page full' : 'workPage page'}>
       <SEO title={`Work`} />
-      <Flex w="100%" bg="rgba(145, 125, 126)" p="10rem" justify="center" align="center">
+      <Flex
+        w="100%"
+        bg="rgba(145, 125, 126)"
+        p="10rem"
+        justify="center"
+        align="center"
+      >
         <Loader size={5} />
       </Flex>
       <section className="content">
