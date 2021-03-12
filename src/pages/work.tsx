@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import WorkRoll from '../components/WorkRoll';
 import SEO from '../components/SEO';
-import { Icon } from '@iconify/react';
-import fullIcon from '@iconify/icons-ant-design/fullscreen-outlined';
-import exitIcon from '@iconify/icons-ant-design/fullscreen-exit-outlined';
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
 import { Loader } from '../components/Loader';
 
 const WorkPage: React.FC = () => {
+  console.log("test");
   const [full, toggleFull] = useState(false);
   useEffect(() => {
     const currentFull = localStorage.getItem('full');
@@ -38,7 +37,7 @@ const WorkPage: React.FC = () => {
             localStorage.setItem('full', full ? 'false' : 'true');
           }}
         >
-          <Icon className="icon" icon={full ? exitIcon : fullIcon} />
+          {full ? <MinusIcon /> : <AddIcon />}
         </div>
         <WorkRoll full={full} />
       </section>

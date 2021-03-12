@@ -1,5 +1,7 @@
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import { Link } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { LogoIcon } from '../icons/LogoIcon';
 
 const Footer = ({ title, showTop, setRef }) => {
   const scrollToTop = () => {
@@ -8,7 +10,16 @@ const Footer = ({ title, showTop, setRef }) => {
     }, 100);
   };
   return (
-    <footer className="footer" ref={setRef}>
+    <Flex
+      ref={setRef}
+      position="fixed"
+      bottom="0"
+      right="0"
+      w="100%"
+      h="5rem"
+      justify="flex-end"
+      align="center"
+    >
       {showTop && (
         <div className="topContainer">
           <span className="top" onClick={scrollToTop}>
@@ -16,12 +27,15 @@ const Footer = ({ title, showTop, setRef }) => {
           </span>
         </div>
       )}
-      <div className="copyright">
-        {' © '}
-        <Link to={`/`}>{title}</Link>
-        {' ' + new Date().getFullYear()}
-      </div>
-    </footer>
+      <AniLink
+        fade
+        to="/work"
+        className="navLogo"
+        title={title}
+      >
+        <LogoIcon id="logoSvg" color="pink.400" h="4rem" w="4rem" />
+      </AniLink>
+    </Flex>
   );
 };
 

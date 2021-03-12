@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
-import { Icon } from '@iconify/react';
-import eyeIcon from '@iconify/icons-icomoon-free/eye';
-import multipleImageIcon from '@iconify/icons-mdi/checkbox-multiple-blank';
+import { ViewIcon, StarIcon } from '@chakra-ui/icons';
 
 class BlogRoll extends React.Component {
   render() {
@@ -44,12 +42,12 @@ const BlogPost = ({ post }) => {
             }}
           />
           {showMultipleImageIcon && (
-            <Icon icon={multipleImageIcon} className="multipleImageIcon" />
+              <StarIcon />
           )}
         </div>
         <p className="itemDescription">{post.excerpt}</p>
         <AniLink fade to={post.fields.slug} className="readSlab">
-          <Icon icon={eyeIcon} />
+            <ViewIcon />
         </AniLink>
       </div>
     </article>

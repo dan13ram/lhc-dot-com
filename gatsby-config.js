@@ -11,7 +11,7 @@ module.exports = {
     siteUrl: `https://littlehoodedcreature.com/`,
     keyboards: `portfolio, personal, typescript, gatsby`,
     social: {
-      twitter: `littlehoodedcreature`,
+      twitter: `lil_hooded_c`,
       linkedIn: `varsha-narendra`,
       instagram: `littlehoodedcreature`,
       youtube: `littlehoodedcreature`,
@@ -75,12 +75,6 @@ module.exports = {
         ]
       }
     },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/Layout`)
-      }
-    },
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
@@ -107,6 +101,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-transition-link`,
     '@chakra-ui/gatsby-plugin',
+    'gatsby-plugin-root-import',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

@@ -1,51 +1,14 @@
 import React from 'react';
+import { VStack } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
-class WorkList extends React.Component {
-  render() {
-    const { data } = this.props;
-    let { edges: posts } = data.allMarkdownRemark;
-    // let i = 0;
-    // while (i < 3) {
-    //     i++;
-    //     posts = posts.concat([...posts]);
-    // }
-
-    return (
-      <div className="workList">
-        <div className="workListInner">
-          {posts &&
-            posts.map(({ node: post }) => {
-              return (
-                <AniLink
-                  fade
-                  to={post.fields.slug}
-                  key={post.id}
-                  className="listItem"
-                >
-                  {post.frontmatter.title}
-                </AniLink>
-              );
-            })}
-        </div>
-      </div>
-    );
-  }
-}
-
-WorkList.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-};
-
-export default props => (
-  <StaticQuery
-    query={graphql`
+const WorkList = () => {
+  const {
+    allMarkdownRemark: { edges: posts },
+  } = useStaticQuery(
+    graphql`
       query WorkListQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
@@ -65,7 +28,28 @@ export default props => (
           }
         }
       }
-    `}
-    render={(data, count) => <WorkList data={data} count={count} />}
-  />
-);
+    `,
+  );
+  // let i = 0;
+  // while (i < 3) {
+  //     i++;
+  //     posts = posts.concat([...posts]);
+  // }
+
+  return (
+    <VStack
+      w="100%"
+    >
+      {posts &&
+        posts.map(({ node: post }) => {
+          return (
+            <AniLink fade to={post.fields.slug} key={post.id}>
+              {post.frontmatter.title}
+            </AniLink>
+          );
+        })}
+    </VStack>
+  );
+};
+
+export default WorkList;
