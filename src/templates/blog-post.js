@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { kebabCase } from 'lodash';
 import { graphql, Link } from 'gatsby';
 import SEO from 'src/layouts/SEO';
@@ -8,7 +7,7 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import EmblaCarousel from '../components/EmblaCarousel';
 import { BlogPostTemplate } from 'src/cms/templates/BlogPostTemplate';
 
-export default BlogPost = ({ data }) => {
+const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
@@ -35,11 +34,7 @@ export default BlogPost = ({ data }) => {
   );
 };
 
-BlogPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-};
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

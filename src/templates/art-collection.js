@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { kebabCase } from 'lodash';
 import { graphql, Link } from 'gatsby';
 import SEO from 'src/layouts/SEO';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 import PreviewCompatibleBackgroundImage from '../components/PreviewCompatibleBackgroundImage';
 import { ArtCollectionTemplate } from 'src/cms/templates/ArtCollectionTemplate'
 
-export default ArtCollection = ({ data }) => {
+const ArtCollection = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
@@ -31,6 +30,8 @@ export default ArtCollection = ({ data }) => {
     />
   );
 };
+
+export default ArtCollection;
 
 export const pageQuery = graphql`
   query ArtCollectionByID($id: String!) {

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { ListItem, Text, Container, Flex, List } from '@chakra-ui/react';
 import { Link, graphql } from 'gatsby';
 
-export default Tags = () => {
+const Tags = () => {
   const posts = this.props.data.allMarkdownRemark.edges;
   const postLinks = posts.map(post => (
     <ListItem key={post.node.fields.slug}>
@@ -34,6 +34,8 @@ export default Tags = () => {
     </Container>
   );
 };
+
+export default Tags;
 
 export const tagPageQuery = graphql`
   query TagPage($tag: String) {
