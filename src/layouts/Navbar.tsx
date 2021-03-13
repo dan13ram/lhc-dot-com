@@ -19,14 +19,14 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteMetadata from 'src/hooks/useSiteMetadata';
 import WorkList from './WorkList';
+import { ThemeToggle } from './ThemeToggle';
 
 import { InstagramIcon } from 'src/icons/InstagramIcon';
 import { TwitterIcon } from 'src/icons/TwitterIcon';
 import { VimeoIcon } from 'src/icons/VimeoIcon';
 import { LinkedInIcon } from 'src/icons/LinkedInIcon';
-import { ThemeToggle } from 'src/components/ThemeToggle';
 
 const Navbar: React.FC = ({ isOpen, onClose }) => {
   const { social } = useSiteMetadata();

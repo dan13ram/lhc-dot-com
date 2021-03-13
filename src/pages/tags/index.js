@@ -1,6 +1,6 @@
 import React from 'react';
 import { kebabCase } from 'lodash';
-import SEO from '../../components/SEO';
+import SEO from 'src/layouts/SEO';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
 const TagsPage = () => {

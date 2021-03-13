@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import WorkRoll from '../components/WorkRoll';
-import SEO from '../components/SEO';
+import SEO from 'src/layouts/SEO';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
 import { Loader } from '../components/Loader';

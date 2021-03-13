@@ -3,7 +3,7 @@ import React, { useRef, useState, useLayoutEffect } from 'react';
 import SEO from './SEO';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteMetadata from 'src/hooks/useSiteMetadata';
 
 const Layout: React.FC = ({ children }) => {
   const { title } = useSiteMetadata();
@@ -11,6 +11,7 @@ const Layout: React.FC = ({ children }) => {
   const pageRef = useRef(null);
   const footerRef = useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   useLayoutEffect(() => {
     function updateFooter() {
       const mainHeight =

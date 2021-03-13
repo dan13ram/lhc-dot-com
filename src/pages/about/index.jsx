@@ -1,42 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import SEO from '../../components/SEO';
-import Content, { HTMLContent } from '../../components/Content';
-import PreviewCompatibleImage from '../../components/PreviewCompatibleImage';
-
-export const AboutPageTemplate = ({
-  title,
-  content,
-  contentComponent,
-  avatarImage,
-  helmet,
-}) => {
-  const PageContent = contentComponent || Content;
-
-  return (
-    <div className="aboutPage page">
-      {helmet || ''}
-
-      <section className="about-me">
-        <div className="title">about me</div>
-        <PreviewCompatibleImage
-          className="avatar"
-          imageInfo={{
-            image: avatarImage,
-          }}
-        />
-        <PageContent className="content" content={content} />
-      </section>
-    </div>
-  );
-};
-
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
-};
+import SEO from 'src/layouts/SEO';
+import Content, { HTMLContent } from 'src/components/Content';
+import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import { AboutPageTemplate } from 'src/cms/templates/AboutPageTemplate';
 
 const AboutPage = ({ data }) => {
   const { markdownRemark } = data;
