@@ -14,4 +14,4 @@ export const ThemeToggle = () => {
       colorScheme={useColorModeValue('white', 'black')}
     />
   );
-}
+};

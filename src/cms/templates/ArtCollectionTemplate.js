@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import { kebabCase } from 'lodash';
-import SEO from 'src/layouts/SEO';
-import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import React, { useRef, useEffect, useState } from 'react';
 import PreviewCompatibleBackgroundImage from 'src/components/PreviewCompatibleBackgroundImage';
+import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import SEO from 'src/layouts/SEO';
+import { Link } from 'gatsby';
 
 export const ArtCollectionTemplate = ({
   title,
@@ -75,7 +75,7 @@ export const ArtCollectionTemplate = ({
             <h4>Tags</h4>
             <ul className="taglist">
               {tags.map(tag => (
-                <li key={tag + `tag`}>
+                <li key={`${tag}tag`}>
                   <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
                 </li>
               ))}
@@ -85,14 +85,6 @@ export const ArtCollectionTemplate = ({
       </footer>
     </PreviewCompatibleBackgroundImage>
   );
-};
-
-ArtCollectionTemplate.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  content: PropTypes.array,
-  helmet: PropTypes.object,
-  tags: PropTypes.array,
 };
 
 export const ArtCollectionPreview = ({ entry, widgetFor }) => {
@@ -106,15 +98,7 @@ export const ArtCollectionPreview = ({ entry, widgetFor }) => {
       tags={tags && tags.toJS()}
       title={entry.getIn(['data', 'title'])}
       description={entry.getIn(['data', 'description'])}
-      preview={true}
+      preview
     />
   );
 };
-
-ArtCollectionPreview.propTypes = {
-  entry: PropTypes.shape({
-    getIn: PropTypes.func,
-  }),
-  widgetFor: PropTypes.func,
-};
-

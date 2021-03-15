@@ -1,17 +1,21 @@
 import { Flex } from '@chakra-ui/react';
-import React from 'react';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
+
 import { LogoIcon } from '../icons/LogoIcon';
 
-const Footer = ({ title, showTop, setRef }) => {
+type Props = {
+  showTop?: boolean;
+};
+
+const Footer: React.FC<Props> = ({ showTop = false }) => {
   const scrollToTop = () => {
-    window.setTimeout(() => {
-      document.querySelector('#top').scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    // window.setTimeout(() => {
+    //   document.querySelector('#top').scrollIntoView({ behavior: 'smooth' });
+    // }, 100);
   };
   return (
     <Flex
-      ref={setRef}
       position="fixed"
       bottom="0"
       right="0"
@@ -27,12 +31,7 @@ const Footer = ({ title, showTop, setRef }) => {
           </span>
         </div>
       )}
-      <AniLink
-        fade
-        to="/work"
-        className="navLogo"
-        title={title}
-      >
+      <AniLink fade to="/work">
         <LogoIcon id="logoSvg" color="pink.400" h="4rem" w="4rem" />
       </AniLink>
     </Flex>

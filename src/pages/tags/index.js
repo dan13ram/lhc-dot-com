@@ -1,7 +1,7 @@
-import React from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { kebabCase } from 'lodash';
+import React from 'react';
 import SEO from 'src/layouts/SEO';
-import { Link, graphql, useStaticQuery } from 'gatsby';
 
 const TagsPage = () => {
   const {
@@ -29,7 +29,7 @@ const TagsPage = () => {
 
   return (
     <div className="tagsPage page">
-      <SEO title={`Tags`} />
+      <SEO title="Tags" />
       <h1>Tags</h1>
       <ul>
         {group.map(tag => (

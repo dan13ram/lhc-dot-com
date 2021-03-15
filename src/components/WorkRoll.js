@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import BackgroundImage from 'gatsby-background-image';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
 
 class WorkRoll extends React.Component {
   render() {
@@ -43,14 +42,6 @@ class WorkRoll extends React.Component {
     );
   }
 }
-
-WorkRoll.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-};
 
 export default props => (
   <StaticQuery

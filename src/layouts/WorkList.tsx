@@ -1,12 +1,24 @@
-import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
 
-const WorkList = () => {
+export const WorkList: React.FC = () => {
   const {
-    allMarkdownRemark: { edges: posts },
+    allMarkdownRemark: { nodes },
+  }: {
+    allMarkdownRemark: {
+      nodes: {
+        excerpt: string;
+        id: string;
+        fields: {
+          slug: string;
+        };
+        frontmatter: {
+          title: string;
+        };
+      }[];
+    };
   } = useStaticQuery(
     graphql`
       query WorkListQuery {
@@ -14,16 +26,14 @@ const WorkList = () => {
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "art-collection" } } }
         ) {
-          edges {
-            node {
-              excerpt(pruneLength: 400)
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
+          nodes {
+            excerpt(pruneLength: 400)
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -37,11 +47,9 @@ const WorkList = () => {
   // }
 
   return (
-    <VStack
-      w="100%"
-    >
-      {posts &&
-        posts.map(({ node: post }) => {
+    <VStack w="100%">
+      {nodes &&
+        nodes.map(post => {
           return (
             <AniLink fade to={post.fields.slug} key={post.id}>
               {post.frontmatter.title}
@@ -51,5 +59,3 @@ const WorkList = () => {
     </VStack>
   );
 };
-
-export default WorkList;

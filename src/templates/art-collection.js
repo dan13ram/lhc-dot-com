@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
 import { graphql, Link } from 'gatsby';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArtCollectionTemplate } from 'src/cms/templates/ArtCollectionTemplate';
 import SEO from 'src/layouts/SEO';
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
+
 import PreviewCompatibleBackgroundImage from '../components/PreviewCompatibleBackgroundImage';
-import { ArtCollectionTemplate } from 'src/cms/templates/ArtCollectionTemplate'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
 const ArtCollection = ({ data }) => {
   const { markdownRemark: post } = data;

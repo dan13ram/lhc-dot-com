@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { kebabCase } from 'lodash';
-import SEO from 'src/layouts/SEO';
+import React, { useEffect, useRef } from 'react';
 import Content, { HTMLContent } from 'src/components/Content';
-import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
 import EmblaCarousel from 'src/components/EmblaCarousel';
+import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import SEO from 'src/layouts/SEO';
 
 export const BlogPostTemplate = ({
   content,
@@ -60,7 +59,7 @@ export const BlogPostTemplate = ({
             <h4>Tags</h4>
             <ul className="taglist">
               {tags.map(tag => (
-                <li key={tag + `tag`}>
+                <li key={`${tag}tag`}>
                   <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
                 </li>
               ))}
@@ -70,15 +69,6 @@ export const BlogPostTemplate = ({
       </footer>
     </div>
   );
-};
-
-BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.object,
-  tags: PropTypes.array,
 };
 
 export const BlogPostPreview = ({ entry, widgetFor }) => {
@@ -93,11 +83,4 @@ export const BlogPostPreview = ({ entry, widgetFor }) => {
       title={entry.getIn(['data', 'title'])}
     />
   );
-};
-
-BlogPostPreview.propTypes = {
-  entry: PropTypes.shape({
-    getIn: PropTypes.func,
-  }),
-  widgetFor: PropTypes.func,
 };

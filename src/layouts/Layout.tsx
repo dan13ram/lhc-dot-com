@@ -1,36 +1,20 @@
-import { useDisclosure, Flex, Button } from '@chakra-ui/react';
-import React, { useRef, useState, useLayoutEffect } from 'react';
-import SEO from './SEO';
+import { Button, Flex, useDisclosure } from '@chakra-ui/react';
+import React from 'react';
+import useSiteMetadata from 'src/hooks/useSiteMetadata';
+
 import Footer from './Footer';
 import Navbar from './Navbar';
-import useSiteMetadata from 'src/hooks/useSiteMetadata';
+import SEO from './SEO';
 
 const Layout: React.FC = ({ children }) => {
   const { title } = useSiteMetadata();
-  const [showTop, shouldShowTop] = useState(false);
-  const pageRef = useRef(null);
-  const footerRef = useRef(null);
+  // const [showTop, shouldShowTop] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  useLayoutEffect(() => {
-    function updateFooter() {
-      const mainHeight =
-        pageRef.current.offsetHeight + footerRef.current.offsetHeight;
-      if (window.innerHeight < mainHeight) {
-        shouldShowTop(true);
-      } else {
-        shouldShowTop(false);
-      }
-    }
-    window.addEventListener('resize', updateFooter);
-    updateFooter();
-    return () => window.removeEventListener('resize', updateFooter);
-  }, [children]);
 
   return (
     <Flex w="100%" direction="column" align="center">
       <SEO title={title} titleTemplate={title} />
-      <Navbar title={title} isOpen={isOpen} onClose={onClose} />
+      <Navbar isOpen={isOpen} onClose={onClose} />
       <Button
         variant="link"
         onClick={onOpen}
@@ -50,10 +34,10 @@ const Layout: React.FC = ({ children }) => {
         </svg>
       </Button>
       <Flex w="100%" direction="column" align="center">
-        <div className="pageContainer" id="top" ref={pageRef}>
+        <div className="pageContainer" id="top">
           {children}
         </div>
-        <Footer title={title} showTop={showTop} setRef={footerRef} />
+        <Footer />
       </Flex>
     </Flex>
   );

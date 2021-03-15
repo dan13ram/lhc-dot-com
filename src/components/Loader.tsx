@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
 import { Fade, Flex, FlexProps } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 
-import { ReactComponent as Hoodie } from '../assets/hoodie.svg';
-import { ReactComponent as Cupcake } from '../assets/cupcake.svg';
 import { ReactComponent as BrushPencil } from '../assets/brush-pencil.svg';
+import { ReactComponent as Cupcake } from '../assets/cupcake.svg';
+import { ReactComponent as Hoodie } from '../assets/hoodie.svg';
+import { ReactComponent as Lotus } from '../assets/lotus.svg';
 import { ReactComponent as Moon } from '../assets/moon.svg';
+import { ReactComponent as Strawberry } from '../assets/strawberry.svg';
 import { ReactComponent as TeaCup } from '../assets/teacup.svg';
 import { ReactComponent as TeaPot } from '../assets/teapot.svg';
-import { ReactComponent as Strawberry } from '../assets/strawberry.svg';
-import { ReactComponent as Lotus } from '../assets/lotus.svg';
 
 type Props = {
   size?: number;

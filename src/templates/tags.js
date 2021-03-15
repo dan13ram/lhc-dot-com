@@ -1,20 +1,24 @@
+import { Container, Flex, List, ListItem, Text } from '@chakra-ui/react';
+import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { ListItem, Text, Container, Flex, List } from '@chakra-ui/react';
-import { Link, graphql } from 'gatsby';
 
-const Tags = () => {
-  const posts = this.props.data.allMarkdownRemark.edges;
+const Tags = ({
+  data: {
+    site: {
+      siteMetadata: { title },
+    },
+    allMarkdownRemark: { nodes: posts, totalCount },
+  },
+  pageContext: { tag },
+}) => {
   const postLinks = posts.map(post => (
-    <ListItem key={post.node.fields.slug}>
-      <Link to={post.node.fields.slug}>
-        <Text fontSize="lg">{post.node.frontmatter.title}</Text>
+    <ListItem key={post.fields.slug}>
+      <Link to={post.fields.slug}>
+        <Text fontSize="lg">{post.frontmatter.title}</Text>
       </Link>
     </ListItem>
   ));
-  const tag = this.props.pageContext.tag;
-  const title = this.props.data.site.siteMetadata.title;
-  const totalCount = this.props.data.allMarkdownRemark.totalCount;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
   } tagged with “${tag}”`;
@@ -50,14 +54,12 @@ export const tagPageQuery = graphql`
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
         }
       }
     }

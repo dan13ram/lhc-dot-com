@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import React from 'react';
 
 const PreviewCompatibleImage = ({ imageInfo, className }) => {
   const { alt = '', childImageSharp, image } = imageInfo;
@@ -15,7 +14,7 @@ const PreviewCompatibleImage = ({ imageInfo, className }) => {
     );
   }
 
-  if (!!childImageSharp) {
+  if (childImageSharp) {
     return (
       <Img className={className} fluid={childImageSharp.fluid} alt={alt} />
     );
@@ -32,15 +31,6 @@ const PreviewCompatibleImage = ({ imageInfo, className }) => {
     );
 
   return null;
-};
-
-PreviewCompatibleImage.propTypes = {
-  imageInfo: PropTypes.shape({
-    alt: PropTypes.string,
-    childImageSharp: PropTypes.object,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-    style: PropTypes.object,
-  }).isRequired,
 };
 
 export default PreviewCompatibleImage;

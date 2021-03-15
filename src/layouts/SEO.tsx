@@ -1,8 +1,9 @@
-import React from 'react';
-import useSiteMetadata from '../hooks/useSiteMetadata';
-import { Helmet } from 'react-helmet';
-import logo from '../../static/img/logo.png';
 import { withPrefix } from 'gatsby';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
+import logo from '../../static/img/logo.png';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 type Meta = {
   name?: string;

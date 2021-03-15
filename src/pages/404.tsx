@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'gatsby';
-
 import { Container } from '@chakra-ui/react';
+import { Link } from 'gatsby';
+import React from 'react';
+
 import Page from '../components/Page';
 
 const NotFoundPage: React.FC = () => (

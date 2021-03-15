@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
-import { DotButton, PrevButton, NextButton } from './EmblaCarouselButtons';
+import React, { useCallback, useEffect, useState } from 'react';
+
+import { DotButton, NextButton, PrevButton } from './EmblaCarouselButtons';
 
 const EmblaCarouselComponent = ({ children }) => {
   const [emblaRef, embla] = useEmblaCarousel({ loop: false });

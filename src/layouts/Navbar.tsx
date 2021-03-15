@@ -1,4 +1,9 @@
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -7,34 +12,29 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  VStack,
   Link,
   Text,
-  AccordionIcon,
-  Accordion,
-  AccordionPanel,
-  AccordionItem,
-  AccordionButton,
   useColorModeValue,
+  VStack,
 } from '@chakra-ui/react';
-import React from 'react';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
 import useSiteMetadata from 'src/hooks/useSiteMetadata';
-import WorkList from './WorkList';
-import { ThemeToggle } from './ThemeToggle';
-
 import { InstagramIcon } from 'src/icons/InstagramIcon';
+import { LinkedInIcon } from 'src/icons/LinkedInIcon';
 import { TwitterIcon } from 'src/icons/TwitterIcon';
 import { VimeoIcon } from 'src/icons/VimeoIcon';
-import { LinkedInIcon } from 'src/icons/LinkedInIcon';
 
-const Navbar: React.FC = ({ isOpen, onClose }) => {
+import { ThemeToggle } from './ThemeToggle';
+import { WorkList } from './WorkList';
+
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
   const { social } = useSiteMetadata();
-  const isActiveNavItem = ({ isCurrent }) => {
-    return isCurrent
-      ? { className: 'navItem active' }
-      : { className: 'navItem' };
-  };
 
   const bgColor = useColorModeValue('black', 'white');
   const fontColor = useColorModeValue('white', 'black');
@@ -53,7 +53,7 @@ const Navbar: React.FC = ({ isOpen, onClose }) => {
                   <AccordionItem>
                     <AccordionButton>
                       <Flex flex={1}>
-                        <AniLink fade getProps={isActiveNavItem} to={`/work`}>
+                        <AniLink fade to="/work">
                           <Text>Work</Text>
                         </AniLink>
                       </Flex>
@@ -65,14 +65,14 @@ const Navbar: React.FC = ({ isOpen, onClose }) => {
                   </AccordionItem>
                   <AccordionItem>
                     <AccordionButton>
-                      <AniLink fade getProps={isActiveNavItem} to={`/blog`}>
+                      <AniLink fade to="/blog">
                         <Text>Blog</Text>
                       </AniLink>
                     </AccordionButton>
                   </AccordionItem>
                   <AccordionItem>
                     <AccordionButton>
-                      <AniLink fade getProps={isActiveNavItem} to={`/about`}>
+                      <AniLink fade to="/about">
                         <Text>About</Text>
                       </AniLink>
                     </AccordionButton>

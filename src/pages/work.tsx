@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { graphql } from 'gatsby';
-import WorkRoll from '../components/WorkRoll';
-import SEO from 'src/layouts/SEO';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
+import { graphql } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import SEO from 'src/layouts/SEO';
+
 import { Loader } from '../components/Loader';
+import WorkRoll from '../components/WorkRoll';
 
 const WorkPage: React.FC = () => {
-  console.log("test");
+  console.log('test');
   const [full, toggleFull] = useState(false);
   useEffect(() => {
     const currentFull = localStorage.getItem('full');
@@ -18,7 +19,7 @@ const WorkPage: React.FC = () => {
   }, []);
   return (
     <div className={full ? 'workPage page full' : 'workPage page'}>
-      <SEO title={`Work`} />
+      <SEO title="Work" />
       <Flex
         w="100%"
         bg="rgba(145, 125, 126)"

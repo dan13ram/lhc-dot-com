@@ -1,6 +1,7 @@
 const CONFIG = {
   flags: {
     DEV_SSR: false,
+    PRESERVE_WEBPACK_CACHE: true,
   },
   siteMetadata: {
     title: `littlehoodedcreature`,

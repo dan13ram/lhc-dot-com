@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { StarIcon, ViewIcon } from '@chakra-ui/icons';
 import { graphql, StaticQuery } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
+
 import PreviewCompatibleImage from './PreviewCompatibleImage';
-import { ViewIcon, StarIcon } from '@chakra-ui/icons';
 
 class BlogRoll extends React.Component {
   render() {
@@ -41,25 +41,15 @@ const BlogPost = ({ post }) => {
               alt: `featured image thumbnail for post ${post.frontmatter.title}`,
             }}
           />
-          {showMultipleImageIcon && (
-              <StarIcon />
-          )}
+          {showMultipleImageIcon && <StarIcon />}
         </div>
         <p className="itemDescription">{post.excerpt}</p>
         <AniLink fade to={post.fields.slug} className="readSlab">
-            <ViewIcon />
+          <ViewIcon />
         </AniLink>
       </div>
     </article>
   );
-};
-
-BlogRoll.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
 };
 
 export default () => (

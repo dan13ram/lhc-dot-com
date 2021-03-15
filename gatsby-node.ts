@@ -1,6 +1,7 @@
 import path from 'path';
 import { createFilePath } from 'gatsby-source-filesystem';
 import { GatsbyNode } from 'gatsby';
+import { uniq, kebabCase } from 'lodash';
 
 export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
@@ -40,9 +41,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
     console.error(allMarkdown.errors);
     throw new Error(allMarkdown.errors);
   } else if (allMarkdown.data) {
-    allMarkdown.data.allMarkdownRemark.nodes.forEach(node => {
+    const posts = allMarkdown.data.allMarkdownRemark.nodes;
+    posts.forEach(node => {
       if (node.frontmatter.templateKey) {
-        console.log(node.frontmatter.templateKey);
         createPage({
           path: node.fields.slug,
           component: path.resolve(
@@ -54,6 +55,27 @@ export const createPages: GatsbyNode['createPages'] = async ({
           },
         });
       }
+    });
+
+    let tags: string[] = [];
+
+    posts.forEach(node => {
+      tags = tags.concat(node.frontmatter.tags);
+    });
+
+    tags = uniq(tags);
+
+    // Make tag pages
+    tags.forEach(tag => {
+      const tagPath = `/tags/${kebabCase(tag)}/`;
+
+      createPage({
+        path: tagPath,
+        component: path.resolve(`src/templates/tags.js`),
+        context: {
+          tag,
+        },
+      });
     });
   }
 };

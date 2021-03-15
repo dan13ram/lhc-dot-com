@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import SEO from 'src/layouts/SEO';
+import React from 'react';
+import { AboutPageTemplate } from 'src/cms/templates/AboutPageTemplate';
 import Content, { HTMLContent } from 'src/components/Content';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
-import { AboutPageTemplate } from 'src/cms/templates/AboutPageTemplate';
+import SEO from 'src/layouts/SEO';
 
 const AboutPage = ({ data }) => {
   const { markdownRemark } = data;
@@ -14,7 +13,7 @@ const AboutPage = ({ data }) => {
       avatarImage={markdownRemark.frontmatter.avatarImage}
       title={markdownRemark.frontmatter.title}
       content={markdownRemark.html}
-      helmet={<SEO title={`About`} />}
+      helmet={<SEO title="About" />}
     />
   );
 };

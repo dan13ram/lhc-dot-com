@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { kebabCase } from 'lodash';
 import { graphql, Link } from 'gatsby';
-import SEO from 'src/layouts/SEO';
-import Content, { HTMLContent } from '../components/Content';
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
-import EmblaCarousel from '../components/EmblaCarousel';
+import { kebabCase } from 'lodash';
+import React, { useEffect, useRef } from 'react';
 import { BlogPostTemplate } from 'src/cms/templates/BlogPostTemplate';
+import SEO from 'src/layouts/SEO';
+
+import Content, { HTMLContent } from '../components/Content';
+import EmblaCarousel from '../components/EmblaCarousel';
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;

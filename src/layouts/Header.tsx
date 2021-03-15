@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
 import { Flex, Text } from '@chakra-ui/react';
+import { Link } from 'gatsby';
+import * as React from 'react';
 
 interface HeaderProps {
   title: string;

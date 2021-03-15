@@ -20,7 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "src"
+    "baseUrl": "./"
 
   },
   "include": ["src"]
