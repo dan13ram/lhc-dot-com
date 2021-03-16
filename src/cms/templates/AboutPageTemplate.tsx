@@ -1,8 +1,21 @@
 import React from 'react';
-import Content from 'src/components/Content';
+import { Content } from 'src/components/Content';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import { GatsbyImageSharpFluidFragment } from 'src/autogen/gatsby-types';
 
-export const AboutPageTemplate = ({
+type Props = {
+  title: string;
+  content: string;
+  contentComponent: React.FC;
+  avatarImage: {
+    childImageSharp: {
+      fluid: GatsbyImageSharpFluidFragment;
+    };
+  };
+  helmet: React.FC;
+};
+
+export const AboutPageTemplate: React.FC<Props> = ({
   title,
   content,
   contentComponent,

@@ -1,9 +1,8 @@
 import { kebabCase } from 'lodash';
 import React, { useEffect, useRef } from 'react';
-import Content, { HTMLContent } from 'src/components/Content';
+import { Content } from 'src/components/Content';
 import EmblaCarousel from 'src/components/EmblaCarousel';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
-import SEO from 'src/layouts/SEO';
 
 export const BlogPostTemplate = ({
   content,

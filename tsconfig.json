@@ -21,7 +21,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "baseUrl": "./"
-
   },
-  "include": ["src"]
+  "include": ["src", "autogen", "gatsby-node.ts", "gatsby-config.ts"]
 }

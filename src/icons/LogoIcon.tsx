@@ -8,8 +8,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M710.69,794c19.88-0.11,41.76-2.81,59.64-12.08c15.95-8.27,28.91-21.34,38.45-36.44
 			c1.22-1.93,2.51-3.91,3.53-5.96c0.79-1.58,0.73-2.93,1.18-4.52c-0.34,1.18,1.4-1.95,1.82-2.6c1.39-2.21,2.24-4.39,2.98-6.88
@@ -32,8 +33,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M336.81,268.95c5.36,51.27,6.19,102.92,2.49,154.34c-0.25,3.41,3.38,5.47,6.33,4.82
 			c46.96-10.37,95.24,3.8,142.5-4.32c6.33-1.09,3.65-10.73-2.66-9.64c-47.25,8.12-95.38-6.08-142.5,4.32
@@ -44,8 +46,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M583.61,261.03c1.22,57.2,2.43,114.41,3.65,171.61c0.14,6.43,10.14,6.45,10,0
 			c-1.22-57.2-2.43-114.41-3.65-171.61C593.47,254.61,583.47,254.58,583.61,261.03L583.61,261.03z"
@@ -55,8 +58,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M748.45,268.99c0.51,55.68,1.01,111.37,1.52,167.05c0.06,6.43,10.06,6.45,10,0
 			c-0.51-55.68-1.01-111.37-1.52-167.05C758.39,262.56,748.39,262.55,748.45,268.99L748.45,268.99z"
@@ -66,8 +70,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M597.11,351.79c52.74-6.32,105.93-8.05,158.97-5.16c6.43,0.35,6.41-9.65,0-10
 			c-53.04-2.89-106.23-1.16-158.97,5.16C590.8,342.54,590.72,352.55,597.11,351.79L597.11,351.79z"
@@ -77,8 +82,9 @@ export const LogoIcon = createIcon({
       <g>
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M743.65,492.72c-67.42-2.08-134.89-2.53-202.34-1.29c-33.52,0.61-67.1,1.28-100.58,3.11
 			c-27.82,1.53-58.41,6.5-78.18,28.14c-9.77,10.69-15.03,24.34-18.56,38.19c-3.92,15.43-6.24,31.32-7.02,47.22
@@ -93,8 +99,9 @@ export const LogoIcon = createIcon({
       </g>
       <g>
         <path
-          strokeWidth={14}
+          strokeWidth={20}
           strokeMiterlimit={10}
+          stroke="currentColor"
           fill="currentColor"
           d="M704.78,791.81c1.7,11.85,3.21,24.45,2.43,36.43s-3.85,23.34-11.31,32.7c-6.55,8.22-15.46,13.55-25.34,17.21
 		c-9.88,3.66-20.72,5.64-31.11,7.15c-22.56,3.29-45.26,5.64-68.02,7.06s-45.57,1.9-68.37,1.44c-17.58-0.35-35.14-1.27-52.69-2.46
@@ -108,8 +115,9 @@ export const LogoIcon = createIcon({
         />
         <g>
           <path
-            strokeWidth={14}
+            strokeWidth={20}
             strokeMiterlimit={10}
+            stroke="currentColor"
             fill="currentColor"
             d="M699.95,793.14c2.69,18.96,5.64,41.02-3.95,58.61c-9.47,17.37-29.15,23.61-47.4,27.02
 			c-42.83,8-87.4,10.31-130.9,10.2c-43.96-0.11-87.76-4.05-131.53-7.72c-21.87-1.83-43.73-3.67-65.6-5.5

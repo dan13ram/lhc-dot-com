@@ -17,10 +17,9 @@ const Footer: React.FC<Props> = ({ showTop = false }) => {
   return (
     <Flex
       position="fixed"
-      bottom="0"
-      right="0"
+      bottom="0.5rem"
+      right="0.5rem"
       w="100%"
-      h="5rem"
       justify="flex-end"
       align="center"
     >
@@ -32,7 +31,7 @@ const Footer: React.FC<Props> = ({ showTop = false }) => {
         </div>
       )}
       <AniLink fade to="/work">
-        <LogoIcon id="logoSvg" color="pink.400" h="4rem" w="4rem" />
+        <LogoIcon color="pink.400" h="5rem" w="5rem" />
       </AniLink>
     </Flex>
   );

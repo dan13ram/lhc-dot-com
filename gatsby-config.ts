@@ -1,24 +1,25 @@
-const CONFIG = {
+export default {
   flags: {
     DEV_SSR: false,
     PRESERVE_WEBPACK_CACHE: true,
+    FAST_REFRESH: true,
   },
   siteMetadata: {
-    title: `littlehoodedcreature`,
+    title: 'littlehoodedcreature',
     author: {
-      name: `Varsha Naren`,
-      summary: `Film-maker & Artist`,
+      name: 'Varsha Naren',
+      summary: 'Film-maker & Artist',
     },
-    description: `Film-maker & Artist`,
-    siteUrl: `https://littlehoodedcreature.com/`,
-    keyboards: `portfolio, personal, typescript, gatsby`,
+    description: 'Film-maker & Artist',
+    siteUrl: 'https://littlehoodedcreature.com/',
+    keyboards: 'portfolio, personal, typescript, gatsby',
     social: {
-      twitter: `lil_hooded_c`,
-      linkedIn: `varsha-narendra`,
-      instagram: `littlehoodedcreature`,
-      youtube: `littlehoodedcreature`,
-      vimeo: `littlehoodedcreature`,
-      github: `littlehoodedcreature`,
+      twitter: 'lil_hooded_c',
+      linkedIn: 'varsha-narendra',
+      instagram: 'littlehoodedcreature',
+      youtube: 'littlehoodedcreature',
+      vimeo: 'littlehoodedcreature',
+      github: 'littlehoodedcreature',
     },
   },
   plugins: [
@@ -79,32 +80,38 @@ const CONFIG = {
     },
     'gatsby-transformer-json',
     {
-      resolve: 'gatsby-plugin-canonical-urls',
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `littlehoodedcreature`,
-        short_name: `littlehoodedcreature`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#ffffff`,
-        //display: `minimal-ui`,
-        icon: `static/img/logo.png`,
+        name: 'littlehoodedcreature',
+        short_name: 'littlehoodedcreature',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        //display: 'minimal-ui',
+        icon: 'static/img/logo.png',
       },
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: `${__dirname}/src/autogen/gatsby-types.d.ts`,
+      },
+    },
     'gatsby-plugin-layout',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-transition-link`,
+    'gatsby-plugin-transition-link',
     '@chakra-ui/gatsby-plugin',
-    'gatsby-plugin-root-import',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: `${__dirname}/src`,
+        autogen: `${__dirname}/autogen`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
@@ -114,5 +121,3 @@ const CONFIG = {
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 };
-
-export default CONFIG;

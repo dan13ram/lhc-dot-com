@@ -1,5 +1,5 @@
-import { Button, Flex, useDisclosure } from '@chakra-ui/react';
-import React from 'react';
+import { Button, Flex } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import useSiteMetadata from 'src/hooks/useSiteMetadata';
 
 import Footer from './Footer';
@@ -9,7 +9,10 @@ import SEO from './SEO';
 const Layout: React.FC = ({ children }) => {
   const { title } = useSiteMetadata();
   // const [showTop, shouldShowTop] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setOpen] = useState(false);
+  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(false);
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex w="100%" direction="column" align="center">
@@ -34,9 +37,7 @@ const Layout: React.FC = ({ children }) => {
         </svg>
       </Button>
       <Flex w="100%" direction="column" align="center">
-        <div className="pageContainer" id="top">
-          {children}
-        </div>
+        <Flex>{children}</Flex>
         <Footer />
       </Flex>
     </Flex>

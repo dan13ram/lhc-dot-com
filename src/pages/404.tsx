@@ -1,18 +1,14 @@
-import { Container } from '@chakra-ui/react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import { Link } from 'gatsby';
 import React from 'react';
 
-import Page from '../components/Page';
-
 const NotFoundPage: React.FC = () => (
-  <Page>
-    <Container>
-      <h1>404: Page not found.</h1>
-      <p>
-        You've hit the void. <Link to="/">Go back.</Link>
-      </p>
-    </Container>
-  </Page>
+  <Container>
+    <Heading>404: Page not found.</Heading>
+    <Text>
+      You've hit the void. <Link to="/">Go back.</Link>
+    </Text>
+  </Container>
 );
 
 export default NotFoundPage;

@@ -28,6 +28,23 @@ import { VimeoIcon } from 'src/icons/VimeoIcon';
 import { ThemeToggle } from './ThemeToggle';
 import { WorkList } from './WorkList';
 
+type NavItemProps = {
+  label: string;
+  href: string;
+  withIcon?: boolean;
+};
+
+const NavItem: React.FC<NavItemProps> = ({ label, href, withIcon = false }) => (
+  <AccordionButton>
+    <Flex flex={1}>
+      <AniLink fade to={href}>
+        <Text>{label}</Text>
+      </AniLink>
+    </Flex>
+    {withIcon && <AccordionIcon />}
+  </AccordionButton>
+);
+
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -51,31 +68,16 @@ const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
               <VStack align="stretch">
                 <Accordion allowToggle>
                   <AccordionItem>
-                    <AccordionButton>
-                      <Flex flex={1}>
-                        <AniLink fade to="/work">
-                          <Text>Work</Text>
-                        </AniLink>
-                      </Flex>
-                      <AccordionIcon />
-                    </AccordionButton>
+                    <NavItem label="Work" href="/work" withIcon />
                     <AccordionPanel>
                       <WorkList />
                     </AccordionPanel>
                   </AccordionItem>
                   <AccordionItem>
-                    <AccordionButton>
-                      <AniLink fade to="/blog">
-                        <Text>Blog</Text>
-                      </AniLink>
-                    </AccordionButton>
+                    <NavItem label="Blog" href="/blog" />
                   </AccordionItem>
                   <AccordionItem>
-                    <AccordionButton>
-                      <AniLink fade to="/about">
-                        <Text>About</Text>
-                      </AniLink>
-                    </AccordionButton>
+                    <NavItem label="About" href="/about" />
                   </AccordionItem>
                 </Accordion>
 

@@ -135,3 +135,5 @@ yarn-error.log*
 # ctags
 tags
 
+# autogen types
+autogen/

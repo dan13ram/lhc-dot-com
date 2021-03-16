@@ -19,7 +19,7 @@ export const WorkList: React.FC = () => {
         };
       }[];
     };
-  } = useStaticQuery(
+  } = useStaticQuery<GatsbyTypes.WorkListQueryQuery>(
     graphql`
       query WorkListQuery {
         allMarkdownRemark(

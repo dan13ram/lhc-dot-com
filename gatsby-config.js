@@ -2,6 +2,7 @@
 // it in any other .js file. It automatically reads TypeScript config from
 // tsconfig.json.
 require('ts-node').register();
+require('dotenv').config();
 
 // Use a TypeScript version of gatsby-config.js.
 module.exports = require('./gatsby-config.ts');

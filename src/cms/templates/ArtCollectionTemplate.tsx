@@ -2,7 +2,6 @@ import { kebabCase } from 'lodash';
 import React, { useRef, useEffect, useState } from 'react';
 import PreviewCompatibleBackgroundImage from 'src/components/PreviewCompatibleBackgroundImage';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
-import SEO from 'src/layouts/SEO';
 import { Link } from 'gatsby';
 
 export const ArtCollectionTemplate = ({
