@@ -1,6 +1,5 @@
 import { VStack } from '@chakra-ui/react';
-import { graphql, useStaticQuery } from 'gatsby';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
 export const WorkList: React.FC = () => {
@@ -51,9 +50,9 @@ export const WorkList: React.FC = () => {
       {nodes &&
         nodes.map(post => {
           return (
-            <AniLink fade to={post.fields.slug} key={post.id}>
+            <Link to={post.fields.slug} key={post.id}>
               {post.frontmatter.title}
-            </AniLink>
+            </Link>
           );
         })}
     </VStack>

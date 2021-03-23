@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React from 'react';
+import { Link } from 'gatsby';
 
 import { LogoIcon } from '../icons/LogoIcon';
 
@@ -30,9 +30,9 @@ const Footer: React.FC<Props> = ({ showTop = false }) => {
           </span>
         </div>
       )}
-      <AniLink fade to="/work">
+      <Link to="/work">
         <LogoIcon color="pink.400" h="5rem" w="5rem" />
-      </AniLink>
+      </Link>
     </Flex>
   );
 };

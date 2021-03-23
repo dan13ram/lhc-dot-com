@@ -1,23 +1,8 @@
 import { StarIcon, ViewIcon } from '@chakra-ui/icons';
-import { graphql, StaticQuery } from 'gatsby';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link, graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 
 import PreviewCompatibleImage from './PreviewCompatibleImage';
-
-class BlogRoll extends React.Component {
-  render() {
-    const { data } = this.props;
-    const { edges: posts } = data.allMarkdownRemark;
-
-    return (
-      <div className="blogRoll">
-        {posts &&
-          posts.map(({ node: post }) => <BlogPost key={post.id} post={post} />)}
-      </div>
-    );
-  }
-}
 
 const BlogPost = ({ post }) => {
   const showMultipleImageIcon = post.frontmatter.featuredImages.length > 1;
@@ -44,11 +29,23 @@ const BlogPost = ({ post }) => {
           {showMultipleImageIcon && <StarIcon />}
         </div>
         <p className="itemDescription">{post.excerpt}</p>
-        <AniLink fade to={post.fields.slug} className="readSlab">
+        <Link to={post.fields.slug}>
           <ViewIcon />
-        </AniLink>
+        </Link>
       </div>
     </article>
+  );
+};
+
+const BlogRoll = ({
+  data: {
+    allMarkdownRemark: { nodes: posts },
+  },
+}) => {
+  return (
+    <div className="blogRoll">
+      {posts && posts.map(post => <BlogPost key={post.id} post={post} />)}
+    </div>
   );
 };
 
@@ -60,25 +57,23 @@ export default () => (
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
-          edges {
-            node {
-              excerpt(pruneLength: 400)
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                description
-                templateKey
-                date(formatString: "MMMM DD, YYYY")
-                featuredPost
-                featuredImages {
-                  image {
-                    childImageSharp {
-                      fluid(maxWidth: 2000, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
+          nodes {
+            excerpt(pruneLength: 400)
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              description
+              templateKey
+              date(formatString: "MMMM DD, YYYY")
+              featuredPost
+              featuredImages {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 2000, quality: 100) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -88,6 +83,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={data => <BlogRoll data={data} />}
   />
 );

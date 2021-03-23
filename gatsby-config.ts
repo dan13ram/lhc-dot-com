@@ -1,8 +1,6 @@
 export default {
   flags: {
     DEV_SSR: false,
-    PRESERVE_WEBPACK_CACHE: true,
-    FAST_REFRESH: true,
   },
   siteMetadata: {
     title: 'littlehoodedcreature',
@@ -103,7 +101,6 @@ export default {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-transition-link',
     '@chakra-ui/gatsby-plugin',
     {
       resolve: 'gatsby-plugin-root-import',

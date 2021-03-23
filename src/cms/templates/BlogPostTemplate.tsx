@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Content } from 'src/components/Content';
 import EmblaCarousel from 'src/components/EmblaCarousel';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
+import { Link } from 'gatsby';
 
 export const BlogPostTemplate = ({
   content,

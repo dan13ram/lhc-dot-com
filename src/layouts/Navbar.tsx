@@ -17,7 +17,7 @@ import {
   useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
 import useSiteMetadata from 'src/hooks/useSiteMetadata';
 import { InstagramIcon } from 'src/icons/InstagramIcon';
@@ -35,11 +35,11 @@ type NavItemProps = {
 };
 
 const NavItem: React.FC<NavItemProps> = ({ label, href, withIcon = false }) => (
-  <AccordionButton>
+  <AccordionButton cursor="initial">
     <Flex flex={1}>
-      <AniLink fade to={href}>
-        <Text>{label}</Text>
-      </AniLink>
+      <GatsbyLink to={href}>
+        <Text cursor="pointer">{label}</Text>
+      </GatsbyLink>
     </Flex>
     {withIcon && <AccordionIcon />}
   </AccordionButton>

@@ -1,6 +1,6 @@
-import { graphql, StaticQuery } from 'gatsby';
+import { SimpleGrid } from '@chakra-ui/react';
+import { Link, graphql, StaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React from 'react';
 import { GatsbyImageSharpFluidFragment } from 'src/autogen/gatsby-types';
 
@@ -38,7 +38,7 @@ export const WorkRoll: React.FC<WorkRollProps> = ({
   full,
 }) => {
   return (
-    <div className={full ? 'workRoll full' : 'workRoll'}>
+    <SimpleGrid columns={3}>
       {posts &&
         posts.map(
           ({
@@ -54,23 +54,18 @@ export const WorkRoll: React.FC<WorkRollProps> = ({
             },
           }) => {
             return (
-              <AniLink
-                fade
-                to={slug}
-                key={id}
-                className={featuredItem ? 'rollItem featured' : 'rollItem'}
-              >
+              <Link to={slug} key={id}>
                 <BackgroundImage fluid={fluid} className="itemContainer">
                   <div className="itemContent">
                     <p className="center itemTitle">{title}</p>
                     <p className="center itemDate">{date}</p>
                   </div>
                 </BackgroundImage>
-              </AniLink>
+              </Link>
             );
           },
         )}
-    </div>
+    </SimpleGrid>
   );
 };
 
@@ -106,8 +101,6 @@ export default ({ full }: { full: boolean }) => (
         }
       }
     `}
-    render={(data: WorkRollProps['data']) => (
-      <WorkRoll data={data} full={full} />
-    )}
+    render={data => <WorkRoll data={data} full={full} />}
   />
 );

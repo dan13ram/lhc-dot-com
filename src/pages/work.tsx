@@ -8,7 +8,6 @@ import { Loader } from '../components/Loader';
 import WorkRoll from '../components/WorkRoll';
 
 const WorkPage: React.FC = () => {
-  console.log('test');
   const [full, toggleFull] = useState(false);
   useEffect(() => {
     const currentFull = localStorage.getItem('full');
