@@ -3,16 +3,18 @@ import { Global } from '@emotion/react';
 import React from 'react';
 import { globalStyles, theme } from 'src/theme';
 
-import Layout from './Layout';
+import { Layout } from 'src/layouts/Layout';
+import { LayoutContextProvider } from 'src/contexts/LayoutContext';
 
 const LayoutWrapper: React.FC = ({ children, ...props }) => {
-  console.log({ props });
   return (
     <ChakraProvider resetCSS theme={theme}>
       <ColorModeScript initialColorMode="dark" />
       <Global styles={globalStyles} />
 
-      <Layout {...props}>{children}</Layout>
+      <LayoutContextProvider>
+        <Layout {...props}>{children}</Layout>
+      </LayoutContextProvider>
     </ChakraProvider>
   );
 };

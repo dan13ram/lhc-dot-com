@@ -9,7 +9,7 @@ const TagsPage = () => {
     site: {
       siteMetadata: { title },
     },
-  } = useStaticQuery(
+  } = useStaticQuery<GatsbyTypes.TagsQueryQuery>(
     graphql`
       query TagsQuery {
         site {

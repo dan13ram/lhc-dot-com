@@ -9,11 +9,12 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 const ArtCollection = ({ data }) => {
   const { markdownRemark: post } = data;
 
+  console.log({ post });
   return (
     <ArtCollectionTemplate
       content={post.frontmatter.content}
       description={post.frontmatter.description}
-      featuredImage={post.frontmatter.featuredImage.childImageSharp.fluid}
+      featuredImage={post.frontmatter.featuredImage}
       helmet={
         <SEO
           titleTemplate="%s | Work"
@@ -45,9 +46,7 @@ export const pageQuery = graphql`
         tags
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
         content {
@@ -55,9 +54,7 @@ export const pageQuery = graphql`
           description
           image {
             childImageSharp {
-              fluid(maxWidth: 2000, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
           }
         }

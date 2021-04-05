@@ -38,7 +38,7 @@ const NavItem: React.FC<NavItemProps> = ({ label, href, withIcon = false }) => (
   <AccordionButton cursor="initial">
     <Flex flex={1}>
       <GatsbyLink to={href}>
-        <Text cursor="pointer">{label}</Text>
+        <Text cursor="pointer">{label.toLowerCase()}</Text>
       </GatsbyLink>
     </Flex>
     {withIcon && <AccordionIcon />}
@@ -50,7 +50,7 @@ type Props = {
   onClose: () => void;
 };
 
-const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
+export const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
   const { social } = useSiteMetadata();
   const { bgColor, fontColor } = useColors();
 
@@ -105,11 +105,9 @@ const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
               </Link>
             </DrawerFooter>
           </Flex>
-          <DrawerCloseButton />
+          <DrawerCloseButton variant="ghost" />
         </DrawerContent>
       </DrawerOverlay>
     </Drawer>
   );
 };
-
-export default Navbar;

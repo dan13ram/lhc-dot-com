@@ -5,6 +5,7 @@ import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
 // import { Link } from 'gatsby';
 import { useColors } from 'src/hooks/useColors';
 import { Flex, Heading, Text } from '@chakra-ui/react';
+import { useTitle } from 'src/contexts/LayoutContext';
 
 export const ArtCollectionTemplate = ({
   title,
@@ -16,6 +17,7 @@ export const ArtCollectionTemplate = ({
 }) => {
   const [margin /*, setMargin */] = useState({});
   const headerRef = useRef(null);
+  useTitle('Work');
   // const setHeaderMargin = mediaQuery => {
   //   const offset = mediaQuery.matches ? '6.5rem' : '2.5rem';
   //   setTimeout(() => {
@@ -42,7 +44,7 @@ export const ArtCollectionTemplate = ({
   return (
     // <Flex w="100%" direction="column" align="stretch">
     <PreviewCompatibleBackgroundImage
-      fluid={featuredImage}
+      image={featuredImage}
       style={{
         backgroundAttachment: 'fixed',
         display: 'flex',
@@ -59,25 +61,24 @@ export const ArtCollectionTemplate = ({
         direction="column"
         align="center"
         style={margin}
-        fontColor={fontColor}
+        color={fontColor}
         bgColor={bgColor}
+        p="2rem"
+        mb="2rem"
       >
         <Flex ref={headerRef} direction="column" align="center">
-          <Heading>{title}</Heading>
+          <Heading mb="2rem">{title}</Heading>
           <Text>{description}</Text>
         </Flex>
 
-        <Flex direction="column" align="center" mt="2rem" w="100%">
+        <Flex direction="column" align="center" w="100%">
           {content && content.length
             ? content.map((item, index) => (
-                <Flex key={index} w="100%">
-                  {/* <p>{item.title}</p> */}
-                  {/* <p>{item.description}</p> */}
+                <Flex key={index.toString()} w="100%" mt="2rem">
                   <PreviewCompatibleImage
-                    imageInfo={{
-                      image: item.image,
-                      alt: item.title,
-                    }}
+                    image={item.image}
+                    alt={item.title}
+                    style={{ width: '100%' }}
                   />
                 </Flex>
               ))

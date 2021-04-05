@@ -8,7 +8,7 @@ type Props = {
   showTop?: boolean;
 };
 
-const Footer: React.FC<Props> = ({ showTop = false }) => {
+export const Footer: React.FC<Props> = ({ showTop = false }) => {
   const scrollToTop = () => {
     // window.setTimeout(() => {
     //   document.querySelector('#top').scrollIntoView({ behavior: 'smooth' });
@@ -18,9 +18,8 @@ const Footer: React.FC<Props> = ({ showTop = false }) => {
     <Flex
       position="fixed"
       bottom="0.5rem"
-      right="0.5rem"
-      w="100%"
-      justify="flex-end"
+      right="1rem"
+      justify="center"
       align="center"
     >
       {showTop && (
@@ -36,5 +35,3 @@ const Footer: React.FC<Props> = ({ showTop = false }) => {
     </Flex>
   );
 };
-
-export default Footer;

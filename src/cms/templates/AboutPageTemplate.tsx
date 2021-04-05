@@ -2,11 +2,14 @@ import React from 'react';
 import { Content } from 'src/components/Content';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
 import { GatsbyImageSharpFluidFragment } from 'src/autogen/gatsby-types';
+import { useColors } from 'src/hooks/useColors';
+import { Flex } from '@chakra-ui/react';
+import { useTitle } from 'src/contexts/LayoutContext';
 
 type Props = {
   title: string;
   content: string;
-  contentComponent: React.FC;
+  contentComponent: React.FC<{ content: string }>;
   avatarImage: {
     childImageSharp: {
       fluid: GatsbyImageSharpFluidFragment;
@@ -24,21 +27,30 @@ export const AboutPageTemplate: React.FC<Props> = ({
 }) => {
   const PageContent = contentComponent || Content;
 
+  const { bgColor, fontColor } = useColors();
+  useTitle('About');
+
   return (
-    <div className="aboutPage page">
+    <Flex
+      w="100%"
+      p="2rem"
+      bgColor={bgColor}
+      color={fontColor}
+      direction="column"
+      align="center"
+      mt="5rem"
+    >
       {helmet || ''}
 
-      <section className="about-me">
-        <div className="title">{title}</div>
+      <Flex w="15rem" h="15rem" borderRadius="50%" overflow="hidden">
         <PreviewCompatibleImage
-          className="avatar"
-          imageInfo={{
-            image: avatarImage,
-          }}
+          image={avatarImage}
+          alt={title}
+          style={{ width: '100%' }}
         />
-        <PageContent className="content" content={content} />
-      </section>
-    </div>
+      </Flex>
+      <PageContent content={content} />
+    </Flex>
   );
 };
 

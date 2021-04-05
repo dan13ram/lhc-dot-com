@@ -4,6 +4,7 @@ import { Content } from 'src/components/Content';
 import EmblaCarousel from 'src/components/EmblaCarousel';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
 import { Link } from 'gatsby';
+import { useTitle } from 'src/contexts/LayoutContext';
 
 export const BlogPostTemplate = ({
   content,
@@ -25,6 +26,7 @@ export const BlogPostTemplate = ({
     }, 50);
   }, []);
   const PostContent = contentComponent || Content;
+  useTitle('Blog');
 
   return (
     <div className="blogPost">

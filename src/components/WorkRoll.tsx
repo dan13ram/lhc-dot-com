@@ -4,6 +4,8 @@ import BackgroundImage from 'gatsby-background-image';
 import React from 'react';
 import { WorkRollQueryQuery } from 'src/autogen/gatsby-types';
 import { useColors } from 'src/hooks/useColors';
+import { getImage } from 'gatsby-plugin-image';
+import { convertToBgImage } from 'gbimage-bridge';
 
 type WorkRollProps = {
   full: boolean;
@@ -19,10 +21,11 @@ export const WorkRoll: React.FC<WorkRollProps> = ({
   const { bgColor, fontColor } = useColors();
   return (
     <SimpleGrid
-      columns={full ? 1 : 3}
+      columns={full ? 1 : { base: 1, md: 2, lg: 3 }}
       w="100%"
       spacing={full ? '0' : '2rem'}
       m="0"
+      mt={full ? '0' : '5rem'}
       p={full ? '0' : '2rem'}
       css={{ scrollSnapType: full ? 'y mandatory' : 'none' }}
       h={full ? '100vh' : 'auto'}
@@ -33,19 +36,19 @@ export const WorkRoll: React.FC<WorkRollProps> = ({
           ({
             fields: { slug },
             id,
-            frontmatter: {
-              imagePosition,
-              featuredImage: {
-                childImageSharp: { fluid },
-              },
-              title,
-            },
+            frontmatter: { imagePosition, featuredImage, title },
           }: WorkRollQueryQuery['nodes'][0]) => {
+            const bgImage = convertToBgImage(getImage(featuredImage));
             return (
-              <Box css={{ scrollSnapAlign: full ? 'start' : 'none' }}>
-                <Link to={slug} key={id}>
+              <Box
+                css={{ scrollSnapAlign: full ? 'start' : 'none' }}
+                borderColor={fontColor}
+                borderWidth="1px"
+                key={id}
+              >
+                <Link to={slug}>
                   <BackgroundImage
-                    fluid={fluid}
+                    {...bgImage}
                     style={
                       full
                         ? {
@@ -59,17 +62,21 @@ export const WorkRoll: React.FC<WorkRollProps> = ({
                       minH={full ? '100vh' : '20rem'}
                       direction="column"
                       justify="flex-end"
-                      padding={full ? '2rem' : '1rem'}
+                      padding={full ? '2rem' : '0'}
                     >
                       <VStack
                         spacing="0.5rem"
                         p="0.5rem"
-                        bgColor={fontColor}
+                        bgColor={`${fontColor}Alpha.300`}
                         color={bgColor}
                         position={full ? 'sticky' : 'relative'}
                         bottom="0"
+                        borderColor={bgColor}
+                        borderWidth="1px"
                       >
-                        <Text textAlign="center">{title}</Text>
+                        <Text textAlign="center" fontWeight="bold">
+                          {title}
+                        </Text>
                       </VStack>
                     </Flex>
                   </BackgroundImage>
@@ -105,9 +112,7 @@ export default ({ full }: { full: boolean }) => (
               featuredItem
               featuredImage {
                 childImageSharp {
-                  fluid(maxWidth: 2000, quality: 100) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 }
               }
             }
