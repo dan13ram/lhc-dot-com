@@ -14,7 +14,6 @@ import {
   Flex,
   Link,
   Text,
-  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
@@ -25,8 +24,9 @@ import { LinkedInIcon } from 'src/icons/LinkedInIcon';
 import { TwitterIcon } from 'src/icons/TwitterIcon';
 import { VimeoIcon } from 'src/icons/VimeoIcon';
 
-import { ThemeToggle } from './ThemeToggle';
-import { WorkList } from './WorkList';
+import { ThemeToggle } from 'src/layouts/ThemeToggle';
+import { WorkList } from 'src/layouts/WorkList';
+import { useColors } from 'src/hooks/useColors';
 
 type NavItemProps = {
   label: string;
@@ -52,17 +52,17 @@ type Props = {
 
 const Navbar: React.FC<Props> = ({ isOpen, onClose }) => {
   const { social } = useSiteMetadata();
-
-  const bgColor = useColorModeValue('black', 'white');
-  const fontColor = useColorModeValue('white', 'black');
+  const { bgColor, fontColor } = useColors();
 
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay>
         <DrawerContent fontFamily="body" bgColor={bgColor} color={fontColor}>
-          <DrawerHeader fontWeight={600} fontSize="2xl" mb={4}>
-            littlehoodedcreature
-          </DrawerHeader>
+          <GatsbyLink to={'/'}>
+            <DrawerHeader fontWeight={600} fontSize="2xl" mb={4}>
+              littlehoodedcreature
+            </DrawerHeader>
+          </GatsbyLink>
           <Flex direction="column" position="relative" w="100%" h="100%" p={2}>
             <DrawerBody>
               <VStack align="stretch">

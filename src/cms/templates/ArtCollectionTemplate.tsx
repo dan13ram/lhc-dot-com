@@ -1,8 +1,10 @@
-import { kebabCase } from 'lodash';
-import React, { useRef, useEffect, useState } from 'react';
+// import { kebabCase } from 'lodash';
+import React, { useRef, useState } from 'react';
 import PreviewCompatibleBackgroundImage from 'src/components/PreviewCompatibleBackgroundImage';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
+import { useColors } from 'src/hooks/useColors';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 export const ArtCollectionTemplate = ({
   title,
@@ -12,63 +14,77 @@ export const ArtCollectionTemplate = ({
   tags,
   helmet,
 }) => {
-  const [margin, setMargin] = useState({});
+  const [margin /*, setMargin */] = useState({});
   const headerRef = useRef(null);
-  const setHeaderMargin = mediaQuery => {
-    const offset = mediaQuery.matches ? '6.5rem' : '2.5rem';
-    setTimeout(() => {
-      headerRef.current &&
-        setMargin({
-          marginTop: `calc(100vh - ${headerRef.current.offsetHeight}px - ${offset})`,
-        });
-    }, 50);
-  };
-  useEffect(() => {
-    setTimeout(() => {
-      headerRef.current &&
-        headerRef.current.scrollIntoView({
-          behavior: 'auto',
-          block: 'end',
-        });
-    }, 50);
-    const mediaQuery = matchMedia('(max-width: 40rem)');
-    setHeaderMargin(mediaQuery);
-    mediaQuery.addListener(setHeaderMargin);
-  }, []);
+  // const setHeaderMargin = mediaQuery => {
+  //   const offset = mediaQuery.matches ? '6.5rem' : '2.5rem';
+  //   setTimeout(() => {
+  //     headerRef.current &&
+  //       setMargin({
+  //         marginTop: `calc(100vh - ${headerRef.current.offsetHeight}px - ${offset})`,
+  //       });
+  //   }, 50);
+  // };
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     headerRef.current &&
+  //       headerRef.current.scrollIntoView({
+  //         behavior: 'auto',
+  //         block: 'end',
+  //       });
+  //   }, 50);
+  //   const mediaQuery = matchMedia('(max-width: 40rem)');
+  //   setHeaderMargin(mediaQuery);
+  //   mediaQuery.addListener(setHeaderMargin);
+  // }, []);
+  //
+  const { bgColor, fontColor } = useColors();
   return (
+    // <Flex w="100%" direction="column" align="stretch">
     <PreviewCompatibleBackgroundImage
-      className="artCollection"
       fluid={featuredImage}
+      style={{
+        backgroundAttachment: 'fixed',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+      }}
     >
       {helmet || ''}
 
-      <article className="container" style={margin}>
-        <header ref={headerRef} id="articleHeader">
-          <h1>{title}</h1>
-          <p>{description}</p>
-        </header>
+      <Flex
+        marginTop="50%"
+        w="85%"
+        direction="column"
+        align="center"
+        style={margin}
+        fontColor={fontColor}
+        bgColor={bgColor}
+      >
+        <Flex ref={headerRef} direction="column" align="center">
+          <Heading>{title}</Heading>
+          <Text>{description}</Text>
+        </Flex>
 
-        <div className="content">
-          {content && content.length ? (
-            <div>
-              {content.map((item, index) => (
-                <div key={index} className="contentItem">
+        <Flex direction="column" align="center" mt="2rem" w="100%">
+          {content && content.length
+            ? content.map((item, index) => (
+                <Flex key={index} w="100%">
                   {/* <p>{item.title}</p> */}
                   {/* <p>{item.description}</p> */}
                   <PreviewCompatibleImage
-                    className="contentImage"
                     imageInfo={{
                       image: item.image,
                       alt: item.title,
                     }}
                   />
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </article>
-      <footer>
+                </Flex>
+              ))
+            : null}
+        </Flex>
+      </Flex>
+      {/*<footer>
         {tags && tags.length ? (
           <div>
             <h4>Tags</h4>
@@ -81,8 +97,9 @@ export const ArtCollectionTemplate = ({
             </ul>
           </div>
         ) : null}
-      </footer>
+    </footer>*/}
     </PreviewCompatibleBackgroundImage>
+    // </Flex>
   );
 };
 

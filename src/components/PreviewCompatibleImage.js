@@ -1,34 +1,20 @@
 import Img from 'gatsby-image';
 import React from 'react';
+import { Image } from '@chakra-ui/react';
 
-const PreviewCompatibleImage = ({ imageInfo, className }) => {
+const PreviewCompatibleImage = ({ imageInfo, ...props }) => {
   const { alt = '', childImageSharp, image } = imageInfo;
 
   if (!!image && !!image.childImageSharp) {
-    return (
-      <Img
-        className={className}
-        fluid={image.childImageSharp.fluid}
-        alt={alt}
-      />
-    );
+    return <Img fluid={image.childImageSharp.fluid} alt={alt} {...props} />;
   }
 
   if (childImageSharp) {
-    return (
-      <Img className={className} fluid={childImageSharp.fluid} alt={alt} />
-    );
+    return <Img fluid={childImageSharp.fluid} alt={alt} {...props} />;
   }
 
   if (!!image && typeof image === 'string')
-    return (
-      <img
-        className={className}
-        src={image}
-        alt={alt}
-        style={{ width: '100%' }}
-      />
-    );
+    return <Image src={image} alt={alt} width="100%" {...props} />;
 
   return null;
 };

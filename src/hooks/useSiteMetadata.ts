@@ -18,9 +18,9 @@ export type SiteMetadata = {
 };
 
 const useSiteMetadata = (): SiteMetadata => {
-  const { site } = useStaticQuery<GatsbyTypes.SITE_METADATA_QUERYQuery>(
+  const { site } = useStaticQuery<GatsbyTypes.SiteMetadataQueryQuery>(
     graphql`
-      query SITE_METADATA_QUERY {
+      query SiteMetadataQuery {
         site {
           siteMetadata {
             title

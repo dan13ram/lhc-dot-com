@@ -1,24 +1,30 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
-import { Flex } from '@chakra-ui/react';
+import { Button, Heading, Flex } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useColors } from 'src/hooks/useColors';
 import SEO from 'src/layouts/SEO';
 
-import { Loader } from '../components/Loader';
+// import { Loader } from '../components/Loader';
 import WorkRoll from '../components/WorkRoll';
 
 const WorkPage: React.FC = () => {
-  const [full, toggleFull] = useState(false);
-  useEffect(() => {
-    const currentFull = localStorage.getItem('full');
-    if (currentFull) {
-      toggleFull(currentFull === 'true');
-      localStorage.setItem('full', currentFull);
-    }
-  }, []);
+  const currentFull = localStorage.getItem('full') === "true";
+  const [full, setFull] = useState(currentFull);
+  console.log({ currentFull, full });
+
+  const { fontColor } = useColors();
+
   return (
-    <div className={full ? 'workPage page full' : 'workPage page'}>
+    <Flex
+      direction="column"
+      align="center"
+      w="100%"
+      position="relative"
+      h="100%"
+    >
       <SEO title="Work" />
+      {/*
       <Flex
         w="100%"
         bg="rgba(145, 125, 126)"
@@ -28,20 +34,32 @@ const WorkPage: React.FC = () => {
       >
         <Loader size={5} />
       </Flex>
-      <section className="content">
-        <div className="title">my work</div>
-        <div
-          className="fullToggle"
+        */}
+      <Flex
+        w="calc(100% - 8rem)"
+        justify="space-between"
+        align="center"
+        position={full ? 'fixed' : 'relative'}
+        zIndex="5"
+        top="0"
+        right="0"
+        ml="8rem"
+        pr="2rem"
+        h="5rem"
+      >
+        <Heading>my work</Heading>
+        <Button
           onClick={() => {
-            toggleFull(full => !full);
-            localStorage.setItem('full', full ? 'false' : 'true');
+            setFull(!full);
+            localStorage.setItem('full', (!full).toString());
           }}
+          colorScheme={fontColor}
         >
           {full ? <MinusIcon /> : <AddIcon />}
-        </div>
-        <WorkRoll full={full} />
-      </section>
-    </div>
+        </Button>
+      </Flex>
+      <WorkRoll full={full} />
+    </Flex>
   );
 };
 
