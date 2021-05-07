@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { AboutPageTemplate } from 'src/cms/templates/AboutPageTemplate';
 import { HTMLContent } from 'src/components/Content';
-import SEO from 'src/layouts/SEO';
+import SEO from 'src/shared/SEO';
 import { AboutPageQueryQuery } from 'src/autogen/gatsby-types';
 
 const AboutPage: React.FC<{ data: AboutPageQueryQuery }> = ({

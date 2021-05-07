@@ -1,5 +1,5 @@
 import React from 'react';
-import SEO from 'src/layouts/SEO';
+import SEO from 'src/shared/SEO';
 
 import BlogRoll from 'src/components/BlogRoll';
 import { useTitle } from 'src/contexts/LayoutContext';

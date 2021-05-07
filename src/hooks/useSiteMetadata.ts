@@ -17,8 +17,10 @@ export type SiteMetadata = {
   };
 };
 
-const useSiteMetadata = (): SiteMetadata => {
-  const { site } = useStaticQuery<GatsbyTypes.SiteMetadataQueryQuery>(
+export const useSiteMetadata = (): SiteMetadata => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery<GatsbyTypes.SiteMetadataQueryQuery>(
     graphql`
       query SiteMetadataQuery {
         site {
@@ -43,7 +45,5 @@ const useSiteMetadata = (): SiteMetadata => {
       }
     `,
   );
-  return site.siteMetadata;
+  return siteMetadata as SiteMetadata;
 };
-
-export default useSiteMetadata;

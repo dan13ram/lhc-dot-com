@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArtCollectionTemplate } from 'src/cms/templates/ArtCollectionTemplate';
-import SEO from 'src/layouts/SEO';
+import SEO from 'src/shared/SEO';
 
 import PreviewCompatibleBackgroundImage from '../components/PreviewCompatibleBackgroundImage';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';

@@ -1,5 +1,5 @@
 // import { kebabCase } from 'lodash';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import PreviewCompatibleBackgroundImage from 'src/components/PreviewCompatibleBackgroundImage';
 import PreviewCompatibleImage from 'src/components/PreviewCompatibleImage';
 // import { Link } from 'gatsby';
@@ -15,34 +15,9 @@ export const ArtCollectionTemplate = ({
   tags,
   helmet,
 }) => {
-  const [margin /*, setMargin */] = useState({});
-  const headerRef = useRef(null);
   useTitle('Work');
-  // const setHeaderMargin = mediaQuery => {
-  //   const offset = mediaQuery.matches ? '6.5rem' : '2.5rem';
-  //   setTimeout(() => {
-  //     headerRef.current &&
-  //       setMargin({
-  //         marginTop: `calc(100vh - ${headerRef.current.offsetHeight}px - ${offset})`,
-  //       });
-  //   }, 50);
-  // };
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     headerRef.current &&
-  //       headerRef.current.scrollIntoView({
-  //         behavior: 'auto',
-  //         block: 'end',
-  //       });
-  //   }, 50);
-  //   const mediaQuery = matchMedia('(max-width: 40rem)');
-  //   setHeaderMargin(mediaQuery);
-  //   mediaQuery.addListener(setHeaderMargin);
-  // }, []);
-  //
   const { bgColor, fontColor } = useColors();
   return (
-    // <Flex w="100%" direction="column" align="stretch">
     <PreviewCompatibleBackgroundImage
       image={featuredImage}
       style={{
@@ -54,19 +29,16 @@ export const ArtCollectionTemplate = ({
       }}
     >
       {helmet || ''}
-
       <Flex
         marginTop="50%"
         w="85%"
         direction="column"
         align="center"
-        style={margin}
         color={fontColor}
-        bgColor={bgColor}
         p="2rem"
         mb="2rem"
       >
-        <Flex ref={headerRef} direction="column" align="center">
+        <Flex direction="column" align="center">
           <Heading mb="2rem">{title}</Heading>
           <Text>{description}</Text>
         </Flex>
@@ -115,7 +87,6 @@ export const ArtCollectionPreview = ({ entry, widgetFor }) => {
       tags={tags && tags.toJS()}
       title={entry.getIn(['data', 'title'])}
       description={entry.getIn(['data', 'description'])}
-      preview
     />
   );
 };

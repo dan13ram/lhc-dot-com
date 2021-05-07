@@ -2,7 +2,7 @@ import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Button, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useColors } from 'src/hooks/useColors';
-import SEO from 'src/layouts/SEO';
+import SEO from 'src/shared/SEO';
 
 // import { Loader } from '../components/Loader';
 import WorkRoll from '../components/WorkRoll';
@@ -12,7 +12,7 @@ const WorkPage: React.FC = () => {
   const currentFull = localStorage.getItem('full') === 'true';
   const [full, setFull] = useState(currentFull);
 
-  const { fontColor } = useColors();
+  const { fontColor, fontColorScheme } = useColors();
   useTitle('Work');
 
   return (
@@ -50,7 +50,9 @@ const WorkPage: React.FC = () => {
             setFull(!full);
             localStorage.setItem('full', (!full).toString());
           }}
-          colorScheme={fontColor}
+          colorScheme={fontColorScheme}
+          variant="ghost"
+          color={fontColor}
         >
           {full ? <MinusIcon /> : <AddIcon />}
         </Button>

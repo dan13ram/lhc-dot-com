@@ -60,9 +60,9 @@ const BlogRoll = ({
 };
 
 export default () => (
-  <StaticQuery<GatsbyTypes.BlogRollQueryQuery>
+  <StaticQuery<GatsbyTypes.QueryBlogRollQuery>
     query={graphql`
-      query BlogRollQuery {
+      query QueryBlogRoll {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }

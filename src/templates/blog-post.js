@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import React, { useEffect, useRef } from 'react';
 import { BlogPostTemplate } from 'src/cms/templates/BlogPostTemplate';
-import SEO from 'src/layouts/SEO';
+import SEO from 'src/shared/SEO';
 
 import Content, { HTMLContent } from '../components/Content';
 import EmblaCarousel from '../components/EmblaCarousel';

@@ -97,7 +97,6 @@ export default {
         outputPath: `${__dirname}/src/autogen/gatsby-types.d.ts`,
       },
     },
-    'gatsby-plugin-layout',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
